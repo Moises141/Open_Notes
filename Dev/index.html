@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Note Taking App</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <h2>Notes</h2>
+            <div id="notes-container"></div>
+            <button id="delete-selected" class="btn">Delete Selected</button>
+        </div>
+        <div class="main-content">
+            <h1>Open Notes</h1>
+
+            <div class="toggle-container">
+                <label class="switch">
+                    <input type="checkbox" id="dark-mode-toggle">
+                    <span class="slider"></span>
+                </label>
+                <label for="dark-mode-toggle">Dark Mode</label>
+
+                <label class="switch">
+                    <input type="checkbox" id="date-toggle">
+                    <span class="slider"></span>
+                </label>
+                <label for="date-toggle">Show Dates</label>
+            </div>
+
+            <div class="note-form">
+                <h2>Add a Note</h2>
+                <input type="text" id="title" placeholder="Enter title"><br>
+                <div id="content" contenteditable="true" class="editable-content" placeholder="Enter content"></div><br>
+                <button class="btn" onclick="addNote()">Add Note</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal for displaying and editing note details -->
+    <div id="note-modal" class="modal">
+        <div class="modal-content" contenteditable="false" data-id="">
+            <div class="modal-nav-bar">
+                <span class="close-button">&times;</span>
+                <!-- Edit button added to the nav bar -->
+                <button class="btn edit-toggle-btn">Edit</button>
+            </div>
+            <h2 id="modal-title"></h2>
+            <p id="modal-content"></p>
+        </div>
+    </div>
+
+    <!-- Include idb library -->
+    <script src="https://cdn.jsdelivr.net/npm/idb@8/build/umd.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="engine.js"></script>
+    <script src="v2.js"></script>
+</body>
+</html>
+
+
+

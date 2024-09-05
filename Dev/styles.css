@@ -1,0 +1,384 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    height: 100vh;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+body.dark-mode {
+    background-color: #121212;
+    color: #ffffff;
+}
+
+.container {
+    display: flex;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 800px;
+    height: 90vh;
+    overflow: hidden;
+    transition: background 0.3s, color 0.3s;
+}
+
+body.dark-mode .container {
+    background: #1e1e1e;
+    color: #ffffff;
+}
+
+.sidebar {
+    width: 35%;
+    background: #f4f4f4;
+    padding: 20px;
+    overflow-y: auto;
+    transition: background 0.3s;
+}
+
+body.dark-mode .sidebar {
+    background: #2c2c2c;
+}
+
+.main-content {
+    width: 65%;
+    padding: 20px;
+    overflow-y: auto;
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+}
+
+h2 {
+    color: #555;
+    margin-top: 20px;
+}
+
+body.dark-mode h1, body.dark-mode h2 {
+    color: #ffffff;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    color: #777;
+}
+
+body.dark-mode label {
+    color: #cccccc;
+}
+
+input[type="text"],
+textarea,
+select {
+    width: 85%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #ffffff;
+    color: #000000;
+    transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+}
+
+body.dark-mode input[type="text"],
+body.dark-mode textarea,
+body.dark-mode select {
+    background-color: #333333;
+    color: #ffffff;
+    border-color: #555555;
+}
+
+textarea {
+    resize: vertical;
+    height: 100px;
+}
+
+.btn {
+    background: #007BFF;
+    color: #fff;
+    border: none;
+    padding: 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 90%;
+    transition: background-color 0.3s;
+}
+
+.btn:hover {
+    background: #0056b3;
+}
+
+/* Note styles */
+.note {
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 10px;
+    margin-bottom: 10px;
+    background: #fafafa;
+    display: flex;
+    align-items: center;
+    transition: background-color 0.3s, border-color 0.3s;
+    position: relative;
+}
+
+body.dark-mode .note {
+    border: 1px solid #555555;
+    background: #333333;
+}
+
+.note input[type="checkbox"] {
+    margin-right: 15px;
+    cursor: pointer;
+}
+
+.note-content {
+    flex: 1;
+    padding: 0 10px;
+}
+
+.note h3 {
+    margin: 0;
+    color: #333;
+    cursor: pointer;
+    flex: 1;
+    padding: 5px;
+}
+
+body.dark-mode .note h3 {
+    color: #ffffff;
+}
+
+.note p {
+    margin: 5px 0;
+    color: #333;
+}
+
+body.dark-mode .note p {
+    color: #cccccc;
+}
+
+/* Dark mode and show date toggle switches */
+.toggle-container {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 20px;
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 34px;
+    height: 20px;
+    margin-right: 10px;
+}
+
+.switch input {
+    display: none;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: .4s;
+    border-radius: 20px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 14px;
+    width: 14px;
+    left: 3px;
+    bottom: 3px;
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%;
+}
+
+input:checked + .slider {
+    background-color: #007BFF;
+}
+
+input:checked + .slider:before {
+    transform: translateX(14px);
+}
+
+/* Modal styles */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.4);
+}
+
+.modal-content {
+    background-color: #ffffff;
+    color: #000000;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+body.dark-mode .modal-content {
+    background-color: #1e1e1e;
+    color: #ffffff;
+}
+
+.modal-content[contenteditable="true"] {
+    border: 2px dashed #007BFF; /* Highlight border when in edit mode */
+    padding: 15px;
+    background-color: #f9f9f9; /* Light background to differentiate edit mode */
+}
+
+body.dark-mode .modal-content[contenteditable="true"] {
+    background-color: #2e2e2e;
+}
+
+.close-button {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close-button:hover,
+.close-button:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.editable-content {
+    border: 0.5px solid #ccc;
+    padding: 10px;
+    min-height: 100px;
+    box-sizing: border-box;
+    overflow: auto;
+    white-space: pre-wrap;
+    width: 89%;
+}
+
+/* Styles for images within modal-content */
+.modal-content img {
+    max-width: 100%;
+    max-height: 70vh;
+    display: block;
+    margin: 10px 0;
+    object-fit: contain;
+    transform: scale(0.8);
+    transform-origin: top left;
+}
+
+/* Styles for images within editable-content */
+.editable-content img {
+    max-width: 100%;
+    max-height: 70vh;
+    display: block;
+    margin: 10px 0;
+    object-fit: contain;
+    transform: scale(0.8);
+    transform-origin: top left;
+}
+
+/* General button styling - already present */
+.btn {
+    background: #007BFF;
+    color: #fff;
+    border: none;
+    padding: 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 90%;
+    transition: background-color 0.3s;
+}
+
+.btn:hover {
+    background: #0056b3;
+}
+
+/* Specific styling for the Edit button within the modal */
+.edit-toggle-btn {
+    display: block;
+    margin: 20px auto 0 auto; /* Center the button horizontally with some top margin */
+    width: 100px; /* Set a specific width */
+    padding: 8px 16px; /* Adjust padding for a balanced appearance */
+    font-size: 14px; /* Adjust font size */
+    background-color: #28a745; /* Initial color for edit mode */
+    color: #fff;
+    border-radius: 4px;
+    transition: background-color 0.3s, transform 0.3s;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
+}
+
+.edit-toggle-btn:hover {
+    background-color: #218838; /* Darker shade for hover state */
+    transform: scale(1.05); /* Slightly enlarge the button on hover */
+}
+
+/* Style for when the button text changes to 'Save' */
+.edit-toggle-btn.edit-mode-active {
+    background-color: #ffc107; /* Yellow for save mode */
+}
+
+.edit-toggle-btn.edit-mode-active:hover {
+    background-color: #e0a800; /* Darker yellow on hover */
+}
+
+/* Dark mode styles for the Edit button */
+body.dark-mode .edit-toggle-btn {
+    background-color: #007BFF; /* Lighter green for dark mode */
+}
+
+body.dark-mode .edit-toggle-btn:hover {
+    background-color: #333; /* Darker green for dark mode hover */
+}
+
+body.dark-mode .edit-toggle-btn.edit-mode-active {
+    background-color: #fd7e14; /* Darker yellow-orange for save mode in dark mode */
+}
+
+body.dark-mode .edit-toggle-btn.edit-mode-active:hover {
+    background-color: #dc3545; /* Darker red-orange on hover in dark mode */
+}
+
+
+/* CSS for the modal */
+#note-modal {
+    position: relative; /* Ensure the modal is positioned relative to contain the absolute Edit button */
+}
+
+/* Edit button */
+.edit-toggle-btn {
+    position: absolute;
+    right: 105px; /* Adjust this value to place it next to the close button */
+    top: 70px;
+    background-color: #007BFF; /* Bootstrap blue */
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.edit-toggle-btn:hover {
+    background-color: #333; /* Slightly darker on hover */
+}
